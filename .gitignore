@@ -1,0 +1,112 @@
+# Curated initial commit: ignore everything, then whitelist the Twiso set.
+# (Keeps game dumps, PKGs, emulator trees, and diagnostic captures out.)
+/*
+!/.gitignore
+!/repo-draft/
+!/PS2-Library-Prototype/
+
+# Safety net: never commit binaries, dumps, captures, or build output.
+*.pkg
+*.iso
+*.bin
+*.sfx
+*.log
+*.zip
+*.7z
+*.o
+*.elf
+*.bmp
+*.png
+*.prx
+*.self
+*.dds
+*.raw.log
+
+# repo-draft: docs only
+/repo-draft/*
+!/repo-draft/README.md
+!/repo-draft/CREDITS.md
+!/repo-draft/.gitignore
+
+# PS2-Library-Prototype: docs + native + the 4 probes consumed by the build
+/PS2-Library-Prototype/*
+!/PS2-Library-Prototype/README.md
+!/PS2-Library-Prototype/NOTICE.md
+!/PS2-Library-Prototype/VERIFICATION.md
+!/PS2-Library-Prototype/RELEASE-SETUP.md
+!/PS2-Library-Prototype/native/
+!/PS2-Library-Prototype/diagnostics/
+
+# native/: docs, sources, and build tooling only
+/PS2-Library-Prototype/native/*
+!/PS2-Library-Prototype/native/README.md
+!/PS2-Library-Prototype/native/NOTICE.md
+!/PS2-Library-Prototype/native/Makefile
+!/PS2-Library-Prototype/native/LICENSE
+!/PS2-Library-Prototype/native/CONTRIBUTING.md
+!/PS2-Library-Prototype/native/build.ps1
+!/PS2-Library-Prototype/native/.gitignore
+!/PS2-Library-Prototype/native/.gitattributes
+!/PS2-Library-Prototype/native/.editorconfig
+!/PS2-Library-Prototype/native/.clang-format
+!/PS2-Library-Prototype/native/.clang-tidy
+!/PS2-Library-Prototype/native/.env.example
+!/PS2-Library-Prototype/native/src/
+!/PS2-Library-Prototype/native/tooling/
+
+# diagnostics/: only the 4 probes consumed by the frontend build
+/PS2-Library-Prototype/diagnostics/*
+!/PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/
+!/PS2-Library-Prototype/diagnostics/native-menu-probe-02/
+!/PS2-Library-Prototype/diagnostics/native-serial-probe-07/
+!/PS2-Library-Prototype/diagnostics/native-profile-probe-08/
+
+# launch probe: sources, tests, and scripts (no build/dist/log/zip output)
+PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/*
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/src/
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/README.md
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/build.sh
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/verify_build.py
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/preview.sh
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/preview.cpp
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/control_tests.cpp
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/gamefiles_tests.cpp
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/jpeg_tests.cpp
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/privilege_tests.cpp
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/apply_tests.cpp
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/prepare_console_elf.py
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/package.ps1
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/gen_ui_font.py
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/gen_ui_icons.py
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/list_imports.sh
+
+# menu probe: shared renderer + input + generated atlases (no probe main/build)
+PS2-Library-Prototype/diagnostics/native-menu-probe-02/*
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/
+PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/*
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/demo_renderer.hpp
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/demo_renderer.cpp
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/ps5_pad.hpp
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/ui_font.hpp
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/ui_font.cpp
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/ui_icons.hpp
+!PS2-Library-Prototype/diagnostics/native-menu-probe-02/src/ui_icons.cpp
+
+# serial probe: ISO directory + serial scanner (no probe main/build)
+PS2-Library-Prototype/diagnostics/native-serial-probe-07/*
+!PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/
+PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/*
+!PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/iso_directory.hpp
+!PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/iso_directory.cpp
+!PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/directory_io.cpp
+!PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/serial_scan.hpp
+!PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/serial_scan.cpp
+!PS2-Library-Prototype/diagnostics/native-serial-probe-07/src/serial_io.cpp
+
+# profile probe: config checker (no probe main/build)
+PS2-Library-Prototype/diagnostics/native-profile-probe-08/*
+!PS2-Library-Prototype/diagnostics/native-profile-probe-08/src/
+PS2-Library-Prototype/diagnostics/native-profile-probe-08/src/*
+!PS2-Library-Prototype/diagnostics/native-profile-probe-08/src/profile_check.hpp
+!PS2-Library-Prototype/diagnostics/native-profile-probe-08/src/profile_check.cpp
+!PS2-Library-Prototype/diagnostics/native-profile-probe-08/src/profile_io.cpp
