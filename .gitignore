@@ -2,7 +2,8 @@
 # (Keeps game dumps, PKGs, emulator trees, and diagnostic captures out.)
 /*
 !/.gitignore
-!/repo-draft/
+!/README.md
+!/CREDITS.md
 !/PS2-Library-Prototype/
 
 # Safety net: never commit binaries, dumps, captures, or build output.
@@ -21,12 +22,6 @@
 *.self
 *.dds
 *.raw.log
-
-# repo-draft: docs only
-/repo-draft/*
-!/repo-draft/README.md
-!/repo-draft/CREDITS.md
-!/repo-draft/.gitignore
 
 # PS2-Library-Prototype: docs + native + the 4 probes consumed by the build
 /PS2-Library-Prototype/*
