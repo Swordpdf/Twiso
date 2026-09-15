@@ -4,7 +4,12 @@
 !/.gitignore
 !/README.md
 !/CREDITS.md
+!/docs/
 !/PS2-Library-Prototype/
+
+# docs: screenshot only
+/docs/*
+!/docs/screenshot.jpg
 
 # Safety net: never commit binaries, dumps, captures, or build output.
 *.pkg

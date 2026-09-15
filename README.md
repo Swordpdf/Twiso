@@ -11,7 +11,7 @@ them through selectable PS2 emulator packages — all from a clean, PS5-styled U
 > must supply your own emulator packages (see
 > [Bring your own backends](#bring-your-own-backends)).
 
-<p align="center"><i>(screenshot: main menu)</i></p>
+![Twiso main menu](docs/screenshot.jpg)
 
 ## What it does
 
