@@ -36,10 +36,15 @@ them through selectable PS2 emulator packages — all from a clean, PS5-styled U
 **Console (runtime)**
 
 - A **jailbroken PS5** on an exploitable firmware, with an ELF loader.
-- **etaHEN** (or **OnionHEN**) app-jailbreak daemon. The app is launched as
-  `PPSA99202`, which must be present in `[app_jailbreak] exact_title_ids`.
-- A **sandbox-escape / `/data` access patch payload** so the app and the
-  emulator backends can read `/data`.
+- **etaHEN** (or **OnionHEN**) app-jailbreak daemon. The app runs as
+  `PPSA99202`, which must be whitelisted in the HEN's jailbreak daemon via
+  `[app_jailbreak] exact_title_ids` — otherwise its backend-launch request
+  is ignored.
+- [ps-patch-system](https://github.com/illusionyy/ps-patch-system) by
+  **illusionyy** (Apache-2.0) — patch shellcore to mount `/data` in the
+  sandbox so the app and the emulator backends can read it.
+- **ShadowMount** by **drakmor** — mounts `/data/homebrew/PPSA99202-app` at
+  `/user/app/PPSA99202/mount.lnk` so Twiso shows up on the PS5 home screen.
 - **Your own emulator backend packages** installed (see below).
 - Optional: network access for cover downloads.
 
@@ -93,10 +98,12 @@ package with that title ID will then launch from the matching menu row.
 
 ## Install (console)
 
-**0. Enable App jailbreak for `PPSA99202`**
+**0. Whitelist `PPSA99202` in etaHEN's jailbreak daemon**
 
-Twiso asks the HEN for the privileges needed to launch a backend. Add its
-title ID to your HEN's app-jailbreak list and reload the HEN:
+Twiso must be whitelisted in the HEN's jailbreak daemon to get the
+privileges needed to launch a backend. Add its title ID to your HEN's
+app-jailbreak list and reload the HEN — without this, etaHEN ignores the
+app's jailbreak request and backend launch fails:
 
 - **etaHEN** — `/data/etaHEN/config.ini`:
   ```ini
@@ -113,10 +120,16 @@ title ID to your HEN's app-jailbreak list and reload the HEN:
   (or add it in the OnionHEN **Toolbox → App jailbreak** list)
 
 At launch the app publishes a request at `/download0/etahen_jailbreak`
-(`{"PID":<pid>}`); both etaHEN and OnionHEN consume it. Also make sure your
-**`/data` access / sandbox-escape patch** is active.
+(`{"PID":<pid>}`); both etaHEN and OnionHEN consume it, but only if
+`PPSA99202` is whitelisted above.
 
-**1. Put the app in place**
+Also, with [ps-patch-system](https://github.com/illusionyy/ps-patch-system)
+running (send `patch-bundle-loader-prospero.elf` to the ELF loader on port
+9021), open its web UI at `http://<console-ip>:23900` and apply the patch that
+mounts `/data` in the sandbox. Without it, the app cannot read its ISOs,
+configs, or covers.
+
+**1. Put the app in place** (via **ShadowMount** by **drakmor**)
 
 ```text
 /data/homebrew/PPSA99202-app/        # eboot.bin, sce_module/, sce_sys/, assets/
@@ -225,7 +238,9 @@ PS2-Library-Prototype/
 
 See [`CREDITS.md`](CREDITS.md). Highlights: the
 [PS5 payload SDK](https://github.com/ps5-payload-dev/sdk), **etaHEN** /
-**OnionHEN**, `ps5-native-app-boilerplate` by **BlackBearReloaded**,
+**OnionHEN**, [ps-patch-system](https://github.com/illusionyy/ps-patch-system)
+by **illusionyy** (Apache-2.0),
+`ps5-native-app-boilerplate` by **BlackBearReloaded**,
 `ps2-covers` by **xlenore**, **Inter** by Rasmus Andersson, and
 **PS5 Button Icons and Controls** by **Zacksly** (CC BY 3.0).
 

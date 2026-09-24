@@ -16,8 +16,10 @@ Items marked **TODO** need an exact link/author confirmed before publishing.
   Author: LightningMods. <https://github.com/LightningMods/etaHEN> *(TODO confirm link)*
 - **OnionHEN** — alternative all-in-one HEN/Toolbox (also consumes the same
   jailbreak request). *(TODO: repo link/author)*
-- **Sandbox-escape / `/data` access patch payload** — grants the app and the
-  emulator backends access to `/data`. *(TODO: name + repo link)*
+- **ps-patch-system** — App patching system for PS4/PS5; patch shellcore to
+  mount `/data` in the sandbox so the app and the emulator backends can read
+  user files. Author: **illusionyy**, **Apache-2.0**.
+  <https://github.com/illusionyy/ps-patch-system>
 - **klogsrv** — kernel log server used by the capture script.
   *(TODO: repo link/author)*
 - **ftpsrv** — FTP server (port 2121) used for deployment/readback.
