@@ -136,10 +136,15 @@ python3 "$probe/verify_build.py"
 mkdir -p "$app/sce_sys" "$app/sce_module" "$app/assets"
 "$tool" self --sign --in "$probe/build/eboot.elf" --out "$app/eboot.bin" --magic 0x1D3D154F
 (cd "$native/runtime" && sha256sum --check --strict libc.prx.sha256)
-for name in sce_sys/param.json sce_sys/icon0.png sce_sys/pic0.png sce_sys/pic1.png sce_module/libc.prx assets/banner.txt; do
-    cp "$profile/dist-final/PPSA99202/$name" "$app/$name"
-    cmp "$profile/dist-final/PPSA99202/$name" "$app/$name"
+# Twiso app identity/presentation: tracked source in app-src (verified working
+# 2026-09-14 dist). libc.prx stays generated: copied from native/runtime after
+# the sha256 gate above, never from the untracked probe-08 dist-final.
+for name in sce_sys/param.json sce_sys/icon0.png sce_sys/pic0.png sce_sys/pic1.png assets/banner.txt; do
+    cp "$probe/app-src/PPSA99202/$name" "$app/$name"
+    cmp "$probe/app-src/PPSA99202/$name" "$app/$name"
 done
+cp "$native/runtime/libc.prx" "$app/sce_module/libc.prx"
+cmp "$native/runtime/libc.prx" "$app/sce_module/libc.prx"
 "$tool" self --inspect --file "$app/eboot.bin"
 "$tool" self --inspect --file "$app/sce_module/libc.prx"
 "$probe/preview.sh"

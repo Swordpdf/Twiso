@@ -78,6 +78,19 @@ PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/*
 !PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/gen_ui_font.py
 !PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/gen_ui_icons.py
 !PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/list_imports.sh
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/
+PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/*
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/
+PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/*
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/sce_sys/
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/assets/
+PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/sce_sys/*
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/sce_sys/param.json
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/sce_sys/icon0.png
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/sce_sys/pic0.png
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/sce_sys/pic1.png
+PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/assets/*
+!PS2-Library-Prototype/diagnostics/native-launch-probe-12-fixed/app-src/PPSA99202/assets/banner.txt
 
 # menu probe: shared renderer + input + generated atlases (no probe main/build)
 PS2-Library-Prototype/diagnostics/native-menu-probe-02/*
