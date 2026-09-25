@@ -123,6 +123,15 @@ At launch the app publishes a request at `/download0/etahen_jailbreak`
 (`{"PID":<pid>}`); both etaHEN and OnionHEN consume it, but only if
 `PPSA99202` is whitelisted above.
 
+**Daemon allowlist file (Twiso daemon builds): `/data/whitelist.txt`** —
+one exact 9-character title ID per line, uppercase, `#` starts a comment,
+max 20 entries. It must contain `PPSA99202` (reload the daemon after
+editing — a stale in-memory copy silently ignores additions):
+```text
+# Twiso daemon allowlist
+PPSA99202
+```
+
 Also, with [ps-patch-system](https://github.com/illusionyy/ps-patch-system)
 running (send `patch-bundle-loader-prospero.elf` to the ELF loader on port
 9021), open its web UI at `http://<console-ip>:23900` and apply the patch that
