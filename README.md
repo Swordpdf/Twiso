@@ -191,8 +191,19 @@ What you should see, and the on-screen text that tells you it's working:
    - If per-game files are missing you land on **`GAME FILES MISSING - PLACE OR
      CREATE`**: press **X** to `CREATE DEFAULTS` (writes `<SERIAL>.txt` + `.lua`),
      or FTP your own and press **Triangle** to recheck.
-   - When it's ready the pill shows **`READY - PRESS LAUNCH`**. Seeing
-     `MASTER DIFFERS - PRESS LAUNCH TO APPLY` on a new game is normal.
+    - When it's ready the pill shows **`READY - PRESS LAUNCH`**. Seeing
+      `MASTER DIFFERS - PRESS LAUNCH TO APPLY` on a new game is normal.
+    - Fresh setup with no `master.txt` yet: the app cannot create it from
+      nothing — seed `/data/PS2/configs/master.txt` over FTP first with any
+      non-empty content (an empty file is rejected). Easiest is the loader
+      for your game, e.g. for `SCUS-97481`:
+      ```text
+      # PS2 Library loader - SCUS-97481. Managed on every launch; edit the game files instead.
+      --config="/data/PS2/configs/SCUS-97481.txt"
+      --config-local-lua="/data/PS2/configs/SCUS-97481.lua"
+      ```
+      A single `#` line also works; LAUNCH then replaces it with the real
+      loader automatically.
 
 4. **Pick the backend.** Open **SELECT EMU / EDIT CONFIGS**; the row you choose
    is marked `ACTIVE` and the pill shows `BACKEND SELECTED`. Press **BACK**.
